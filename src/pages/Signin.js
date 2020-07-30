@@ -12,9 +12,23 @@ class Signin extends React.Component {
   render() {
     return (
       <div className="signin">
-        <div className="signin background">
-          <div className="signin logo">logo</div>
-          test
+        <div className="background">
+          <div className="logo">
+            <h1 className="title">My Books</h1>
+            <p className="subTitle">Oh for a book and a shady nook...</p>
+          </div>
+
+          <div className="login">
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={this.change}
+            />
+            <input type="password" ref={this.passwordRef} />
+            <button onClick={this.click} className=" loginBtn">
+              로그인
+            </button>
+          </div>
         </div>
       </div>
     );
