@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-
 // pages
 import Home from './pages/Home';
 import Signin from './pages/Signin';
