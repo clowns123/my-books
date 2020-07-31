@@ -9,6 +9,7 @@ class Signin extends React.Component {
     email: '',
   };
   passwordRef = React.createRef(); // 한번 만들어지면 객체 인스턴스는 그대로
+
   render() {
     return (
       <div className="signin">
@@ -23,8 +24,13 @@ class Signin extends React.Component {
               type="text"
               value={this.state.email}
               onChange={this.change}
+              placeholder="ID를 입력하세요"
             />
-            <input type="password" ref={this.passwordRef} />
+            <input
+              type="password"
+              ref={this.passwordRef}
+              placeholder="패스워드를 입력하세요"
+            />
             <button onClick={this.click} className=" loginBtn">
               로그인
             </button>
@@ -32,31 +38,9 @@ class Signin extends React.Component {
         </div>
       </div>
     );
-
-    /*
-     <h1 className="signin title">로그인</h1>
-        <div className="signin login">
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={this.change}
-            className="signin id"
-          />
-          <input
-            type="password"
-            ref={this.passwordRef}
-            className="signin password"
-          />
-          <button onClick={this.click} className="signin loginBtn">
-            로그인
-          </button>
-        </div>
-    */
   }
 
   click = async () => {
-    console.log('login', this.state.email, this.passwordRef.current.value);
-
     // 이메일과 패스워드를 뽑아서 서버에 보낸다. POST
 
     // web api
