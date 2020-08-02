@@ -10,26 +10,56 @@ class Home extends Component {
     books: [],
     loading: false,
     error: null,
+    page: 1,
+    start: 0,
+    end: 1,
   };
+
+  handleChangeIndexUp = () => {
+    const { page, start, end } = this.state;
+    if (end === this.state.books.length) return;
+    this.setState({
+      ...this.setState,
+      page: page + 1,
+      start: start + 1,
+      end: end + 1,
+    });
+  };
+
+  handleChangeIndexDown = () => {
+    const { page, start, end } = this.state;
+    if (start === 0) return;
+    this.setState({
+      ...this.state,
+      page: page - 1,
+      start: start - 1,
+      end: end - 1,
+    });
+  };
+
   render() {
+    const target = this.state.books.slice(this.state.start, this.state.end);
+    console.log(this.state.books);
     return (
       <div className="home">
-        <h1>Home</h1>
+        <h1>Home {this.state.page}</h1>
         {this.state.loading && <h3>로딩 중</h3>}
         {this.state.error ? (
           <h2>에러</h2>
         ) : (
           <div className="books">
-            {this.state.books.map((book, i) => {
+            {target.map((book, i) => {
               return (
                 <div className="book" key={i}>
                   <h2>제목 : {book.title}</h2>
                   <p>메세지 : {book.message}</p>
-                  <div>저자 : {book.author}</div>
-                  <div>업로드 일 : {book.updatedAt.slice(0, 10)}</div>
+                  <p>저자 : {book.author}</p>
+                  <p>업로드 일 : {book.updatedAt.slice(0, 10)} </p>
                 </div>
               );
             })}
+            <button onClick={this.handleChangeIndexDown}>{'<'}</button>
+            <button onClick={this.handleChangeIndexUp}>{'>'}</button>
           </div>
         )}
       </div>
