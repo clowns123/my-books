@@ -1,7 +1,8 @@
-import withAuth from '../hocs/withAuth';
 import React, { Component } from 'react';
 import axios from 'axios';
 import PersonContext from '../Context/PersonContext';
+import withAuth from '../hocs/withAuth';
+import '../styles/home.scss';
 
 class Home extends Component {
   static contextType = PersonContext;
@@ -12,15 +13,24 @@ class Home extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="home">
         <h1>Home</h1>
         {this.state.loading && <h3>로딩 중</h3>}
         {this.state.error ? (
-          <h3>에러</h3>
+          <h2>에러</h2>
         ) : (
-          this.state.books.map((book) => {
-            return <p>{book.title}</p>;
-          })
+          <div className="books">
+            {this.state.books.map((book, i) => {
+              return (
+                <div className="book" key={i}>
+                  <h2>제목 : {book.title}</h2>
+                  <p>메세지 : {book.message}</p>
+                  <div>저자 : {book.author}</div>
+                  <div>업로드 일 : {book.updatedAt.slice(0, 10)}</div>
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
     );
@@ -42,6 +52,10 @@ class Home extends Component {
       console.log(res.data);
       this.setState({
         ...this.state,
+        books: [...res.data],
+      });
+      this.setState({
+        ...this.state,
         loading: false,
       });
     } catch (err) {
@@ -53,4 +67,4 @@ class Home extends Component {
   }
 }
 
-export default withAuth(Home, true);
+export default withAuth(Home);

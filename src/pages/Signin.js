@@ -3,6 +3,7 @@ import axios from 'axios';
 import { message } from 'antd';
 import withAuth from '../hocs/withAuth';
 import '../styles/signin.scss';
+import withoutAuth from '../hocs/withoutAuth';
 
 class Signin extends React.Component {
   state = {
@@ -99,4 +100,4 @@ class Signin extends React.Component {
   };
 }
 
-export default withAuth(Signin, false);
+export default withoutAuth(Signin);
