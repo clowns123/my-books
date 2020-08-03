@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useCallback } from 'react';
 import axios from 'axios';
 import PersonContext from '../Context/PersonContext';
 import withAuth from '../hocs/withAuth';
 import '../styles/home.scss';
+import BookListContainer from '../containers/BookListContainer';
 
 class Home extends Component {
   static contextType = PersonContext;
@@ -41,30 +42,33 @@ class Home extends Component {
     const target = this.state.books.slice(this.state.start, this.state.end);
 
     return (
-      <div className="home">
-        <h1>Home {this.state.page}</h1>
-        {this.state.loading && <h3>로딩 중</h3>}
-        {this.state.error ? (
-          <h2>에러</h2>
-        ) : (
-          <div className="books">
-            {target.map((book, i) => {
-              return (
-                <div className="book" key={i}>
-                  <h2>제목 : {book.title}</h2>
-                  <p className="message">메세지 : {book.message}</p>
-                  <p className="author">저자 : {book.author}</p>
-                  <p className="date">
-                    업로드 일 : {book.updatedAt.slice(0, 10)}{' '}
-                  </p>
-                </div>
-              );
-            })}
-            <button onClick={this.handleChangeIndexDown}>{'<'}</button>
-            <button onClick={this.handleChangeIndexUp}>{'>'}</button>
-          </div>
-        )}
-      </div>
+      // <div className="home">
+      //   <h1>Home {this.state.page}</h1>
+      //   {this.state.loading && <h3>로딩 중</h3>}
+      //   {this.state.error ? (
+      //     <h2>에러</h2>
+      //   ) : (
+      //     <div className="books">
+      //       {target.map((book, i) => {
+      //         return (
+      //           <div className="book" key={i}>
+      //             <h2>제목 : {book.title}</h2>
+      //             <p className="message">메세지 : {book.message}</p>
+      //             <p className="author">저자 : {book.author}</p>
+      //             <p className="date">
+      //               업로드 일 : {book.updatedAt.slice(0, 10)}{' '}
+      //             </p>
+      //           </div>
+      //         );
+      //       })}
+      //       <button onClick={this.handleChangeIndexDown}>{'<'}</button>
+      //       <button onClick={this.handleChangeIndexUp}>{'>'}</button>
+      //     </div>
+      //   )}
+      // </div>
+
+      // ---------------------------------------------------------------------
+      <BookListContainer token={this.props.token} />
     );
   }
 

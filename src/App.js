@@ -8,9 +8,10 @@ import NotFound from './pages/NotFound';
 import FatalError from './pages/FatalError';
 import Counter from './components/Counter';
 import PersonContext from './Context/PersonContext';
+import store from './store';
 
 const persons = [{ id: 0, name: 'mark' }];
-export default function App() {
+export default function App({ store }) {
   return (
     <ErrorBoundary FallbackComponent={FatalError}>
       <PersonContext.Provider value={persons}>
