@@ -39,7 +39,7 @@ class Home extends Component {
 
   render() {
     const target = this.state.books.slice(this.state.start, this.state.end);
-    console.log(this.state.books);
+
     return (
       <div className="home">
         <h1>Home {this.state.page}</h1>
@@ -52,9 +52,11 @@ class Home extends Component {
               return (
                 <div className="book" key={i}>
                   <h2>제목 : {book.title}</h2>
-                  <p>메세지 : {book.message}</p>
-                  <p>저자 : {book.author}</p>
-                  <p>업로드 일 : {book.updatedAt.slice(0, 10)} </p>
+                  <p className="message">메세지 : {book.message}</p>
+                  <p className="author">저자 : {book.author}</p>
+                  <p className="date">
+                    업로드 일 : {book.updatedAt.slice(0, 10)}{' '}
+                  </p>
                 </div>
               );
             })}

@@ -4,10 +4,12 @@ import { message } from 'antd';
 import withAuth from '../hocs/withAuth';
 import '../styles/signin.scss';
 import withoutAuth from '../hocs/withoutAuth';
+import * as EmailValidator from 'email-validator';
 
 class Signin extends React.Component {
   state = {
     email: '',
+    isEmailValid: false,
   };
   passwordRef = React.createRef(); // 한번 만들어지면 객체 인스턴스는 그대로
 
@@ -23,6 +25,12 @@ class Signin extends React.Component {
           <div className="login">
             <input
               type="text"
+              style={
+                this.state.isEmailValid
+                  ? { backgroundColor: '#6eaa5e' }
+                  : { backgroundColor: '#ff7f6b' }
+              }
+              aria-describedby="emailHelp"
               value={this.state.email}
               onChange={this.change}
               placeholder="ID를 입력하세요"
@@ -96,7 +104,9 @@ class Signin extends React.Component {
   };
 
   change = (e) => {
-    this.setState({ email: e.target.value });
+    //이메일 유효성 검사 함수
+    const test = EmailValidator.validate(e.target.value);
+    this.setState({ email: e.target.value, isEmailValid: test });
   };
 }
 

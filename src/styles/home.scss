@@ -18,8 +18,13 @@
     width: 360px;
     background: rgba($color: #fff, $alpha: 0.7);
     border-radius: 2px;
-    p {
+    position: relative;
+    
+    .message{
+      position: relative;
+      height: 3rem
     }
+    
     .book + .book {
       margin-top: 1.5rem;
     }
@@ -27,5 +32,6 @@
   button {
     display: inline;
     color: red;
+    position: relative;
   }
 }
