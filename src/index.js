@@ -6,8 +6,18 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import store from './store';
+<<<<<<< HEAD
 import { Provider } from 'react-redux';
 
+=======
+// import MyReducxContext from './Context/MyReduxContext';
+import { Provider } from 'react-redux';
+
+// store.subscribe(() => {
+//   ReactDOM.render(<App store={store} />, document.getElementById('root'));
+// });
+
+>>>>>>> c9b7713146fc37de51c23fb4bc4791f9b78bed41
 ReactDOM.render(
   <Provider store={store}>
     <App />

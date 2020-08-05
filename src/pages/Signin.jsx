@@ -2,14 +2,17 @@ import React from 'react';
 import axios from 'axios';
 import { message } from 'antd';
 import withoutAuth from '../hocs/withoutAuth';
+import * as EmailValidator from 'email-validator';
 
 class Signin extends React.Component {
   state = {
     email: '',
+    isEmailValid: false,
   };
   passwordRef = React.createRef(); // 한번 만들어지면 객체 인스턴스는 그대로
   render() {
     return (
+<<<<<<< HEAD:src/pages/Signin.jsx
       <div>
         <h1>로그인</h1>
         <p>
@@ -21,6 +24,38 @@ class Signin extends React.Component {
         <p>
           <button onClick={this.click}>로그인</button>
         </p>
+=======
+      <div className="signin">
+        <div className="background">
+          <div className="logo">
+            <h1 className="title">My Books</h1>
+            <p className="subTitle">Oh for a book and a shady nook...</p>
+          </div>
+
+          <div className="login">
+            <input
+              type="text"
+              style={
+                this.state.isEmailValid
+                  ? { backgroundColor: '#6eaa5e' }
+                  : { backgroundColor: '#ff7f6b' }
+              }
+              aria-describedby="emailHelp"
+              value={this.state.email}
+              onChange={this.change}
+              placeholder="ID를 입력하세요"
+            />
+            <input
+              type="password"
+              ref={this.passwordRef}
+              placeholder="패스워드를 입력하세요"
+            />
+            <button onClick={this.click} className=" loginBtn">
+              로그인
+            </button>
+          </div>
+        </div>
+>>>>>>> c9b7713146fc37de51c23fb4bc4791f9b78bed41:src/pages/Signin.js
       </div>
     );
   }
@@ -82,7 +117,9 @@ class Signin extends React.Component {
   };
 
   change = (e) => {
-    this.setState({ email: e.target.value });
+    //이메일 유효성 검사 함수
+    const test = EmailValidator.validate(e.target.value);
+    this.setState({ email: e.target.value, isEmailValid: test });
   };
 }
 

@@ -1,0 +1,76 @@
+.signin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-image: url(image/destop1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  // 내부 중앙정렬
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  .logo {
+    display: block;
+    padding-bottom: 2rem;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-bottom: 0;
+  }
+
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  width: 360px;
+  background: rgba($color: #fff, $alpha: 0.7);
+  border-radius: 2px;
+}
+
+// login
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // 로그인 버튼
+  .loginBtn {
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.25rem 1rem;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    background: gray;
+    &:hover {
+      background: #252524;
+    }
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 1rem;
+  }
+  // 로그인 인풋
+  input {
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #645757;
+    padding-bottom: 0.5rem;
+    outline: none;
+    width: 100%;
+    &:focus {
+      color: #1b1b1b;
+      border-bottom: 1px solid #0ce1f0;
+    }
+    border-radius: 5px;
+  }
+  input + input {
+    margin-top: 1rem;
+  }
+}
