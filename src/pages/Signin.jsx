@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { message } from 'antd';
-import withAuth from '../hocs/withAuth';
-import '../styles/signin.scss';
 import withoutAuth from '../hocs/withoutAuth';
 
 class Signin extends React.Component {
@@ -10,38 +8,26 @@ class Signin extends React.Component {
     email: '',
   };
   passwordRef = React.createRef(); // 한번 만들어지면 객체 인스턴스는 그대로
-
   render() {
     return (
-      <div className="signin">
-        <div className="background">
-          <div className="logo">
-            <h1 className="title">My Books</h1>
-            <p className="subTitle">Oh for a book and a shady nook...</p>
-          </div>
-
-          <div className="login">
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.change}
-              placeholder="ID를 입력하세요"
-            />
-            <input
-              type="password"
-              ref={this.passwordRef}
-              placeholder="패스워드를 입력하세요"
-            />
-            <button onClick={this.click} className=" loginBtn">
-              로그인
-            </button>
-          </div>
-        </div>
+      <div>
+        <h1>로그인</h1>
+        <p>
+          <input type="text" value={this.state.email} onChange={this.change} />
+        </p>
+        <p>
+          <input type="password" ref={this.passwordRef} />
+        </p>
+        <p>
+          <button onClick={this.click}>로그인</button>
+        </p>
       </div>
     );
   }
 
   click = async () => {
+    console.log('login', this.state.email, this.passwordRef.current.value);
+
     // 이메일과 패스워드를 뽑아서 서버에 보낸다. POST
 
     // web api

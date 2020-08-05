@@ -1,4 +1,4 @@
-import React, { useState, useMemo, memo } from 'react';
+import React, { useState } from 'react';
 
 function sum(persons) {
   console.log('sum...');
@@ -16,7 +16,7 @@ const Example9 = () => {
     setValue(e.target.value);
   }
 
-  const count = useMemo(() => {
+  const count = React.useMemo(() => {
     return sum(persons);
   }, [persons]);
 
@@ -28,4 +28,4 @@ const Example9 = () => {
   );
 };
 
-export default memo(Example9);
+export default Example9;
