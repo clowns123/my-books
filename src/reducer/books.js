@@ -2,16 +2,10 @@ import {
   START_LOADING,
   END_LOADING,
   START_GET_BOOKS,
-<<<<<<< HEAD
   SUCCESS_GET_BOOKS,
   FAIL_GET_BOOKS,
-} from './actions';
+} from "../actions";
 
-=======
-  FAIL_GET_BOOKS,
-  SUCCESS_GET_BOOKS,
-} from './actions';
->>>>>>> c9b7713146fc37de51c23fb4bc4791f9b78bed41
 // 보내온 액션과 현재 상태를 이용해서
 // 새로운 상태를 만드는 함수
 
@@ -24,8 +18,7 @@ const initialState = {
 
 // 앱이 실행될 때
 // 액션이 날라올 때
-export default function reducer(state = initialState, action) {
-<<<<<<< HEAD
+export default function books(state = initialState, action) {
   console.log(state, action);
 
   switch (action.type) {
@@ -39,13 +32,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         loading: false,
       };
-=======
-  switch (action.type) {
-    // case START_LOADING:
-    //   return { loading: true };
-    // case END_LOADING:
-    //   return { loading: false };
->>>>>>> c9b7713146fc37de51c23fb4bc4791f9b78bed41
     case START_GET_BOOKS:
       return {
         loading: true,
