@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { Input, SigninBlock, WhiteBox, Title } from "../styles/styled";
+import { Button } from "antd";
 
 const SigninForm = ({ login }) => {
   const emaulRef = useRef();
@@ -7,23 +9,29 @@ const SigninForm = ({ login }) => {
   function click() {
     const email = emaulRef.current.value;
     const pass = passRef.current.value;
-
-    if (email === "" || pass === "") return;
     login(email, pass);
   }
 
   return (
-    <div>
-      <p>
-        <input type="text" ref={emaulRef} />
-      </p>
-      <p>
-        <input type="password" ref={passRef} />
-      </p>
-      <p>
-        <button onClick={click}>로그인</button>
-      </p>
-    </div>
+    <SigninBlock>
+      <WhiteBox>
+        <Title> 로그인 </Title>
+        <p>
+          <Input type="text" ref={emaulRef} />
+        </p>
+        <p>
+          <Input type="password" ref={passRef} />
+        </p>
+        <p>
+          <Button
+            onClick={click}
+            style={{ backgroundColor: "#333", color: "white" }}
+          >
+            로그인
+          </Button>
+        </p>
+      </WhiteBox>
+    </SigninBlock>
   );
 };
 

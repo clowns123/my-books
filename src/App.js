@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import NotFound from "./pages/NotFound";
 import FatalError from "./pages/FatalError";
-import PersonContext from "./context/PersonContext";
+import PersonContext from "./Context/PersonContext";
 
 const persons = [
   { id: 0, name: "Mark", age: 38 },

@@ -2,11 +2,9 @@ import BookService from "./services/BookService";
 import UserService from "./services/UserService";
 import TokenService from "./services/TokenService";
 
-// 액션의 타입을 정의하여 변수로 빼는 단계
 export const START_LOADING = "START_LOADING";
 export const END_LOADING = "END_LOADING";
 
-// 액션 객체를 만들어 내는 함수 (액션 생성자)를 만드는 단계
 export function startLoading() {
   return {
     type: START_LOADING,
@@ -62,7 +60,7 @@ export function getBookThunk(token) {
 }
 
 function sleep(ms) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
     }, ms);
@@ -77,17 +75,17 @@ const loginStart = () => ({
   type: LOGIN_START,
 });
 
-const loginSuccess = token => ({
+const loginSuccess = (token) => ({
   type: LOGIN_SUCCESS,
   token,
 });
-const loginFail = err => ({
+const loginFail = (err) => ({
   type: LOGIN_FAIL,
   err,
 });
 
 export const loginThunk = (email, password, history) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       dispatch(loginStart());
       await sleep();
