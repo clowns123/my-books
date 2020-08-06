@@ -5,10 +5,11 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import create from "./store";
+import create from "./redux/create";
 import { Provider } from "react-redux";
 
-//
+// 초기화 시점
+// 유지하고 싶은 데이터가 있을 경우 create()로 넣어야 한다.
 const store = create();
 
 ReactDOM.render(

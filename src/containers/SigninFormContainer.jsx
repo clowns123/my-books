@@ -1,17 +1,15 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { loginThunk } from "../actions";
+import { startLoginSagaActionCreator } from "../redux/modules/auth";
 import SigninForm from "../components/SigninForm";
-import { useHistory } from "react-router-dom";
 
 function SigninFormContainer() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const login = useCallback(
     (email, password) => {
-      dispatch(loginThunk(email, password, history));
+      dispatch(startLoginSagaActionCreator(email, password));
     },
-    [dispatch, history]
+    [dispatch]
   );
   return <SigninForm login={login} />;
 }

@@ -1,6 +1,8 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "./redux/create";
 
 // pages
 import Home from "./pages/Home";
@@ -18,13 +20,13 @@ export default function App() {
   return (
     <ErrorBoundary FallbackComponent={FatalError}>
       <PersonContext.Provider value={persons}>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
           <Switch>
             <Route path="/signin" component={Signin} />
             <Route path="/" exact component={Home} />
             <Route component={NotFound} />
           </Switch>
-        </BrowserRouter>
+        </ConnectedRouter>
       </PersonContext.Provider>
     </ErrorBoundary>
   );
