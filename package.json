@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "connected-react-router": "^6.8.0",
     "email-validator": "^2.0.4",
+    "node-gyp": "^7.0.0",
     "node-sass": "^4.14.1",
     "open-color": "^1.7.0",
     "react": "^16.13.1",

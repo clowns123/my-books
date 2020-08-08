@@ -1,5 +1,5 @@
-import BookService from "../../services/BookService";
 import { takeLatest, put, delay, call, select } from "redux-saga/effects";
+import BookService from "../../services/BookService";
 
 // 액션 타입
 const prefix = "my-books/books";
@@ -36,8 +36,6 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  console.log(state, action);
-
   switch (action.type) {
     case START:
       return {
@@ -71,10 +69,9 @@ function* startGetBooksSaga() {
   try {
     yield put(startGetBooks());
     yield delay(2000);
-
-    const token = yield select((start) => start.auth.token);
+    const token = yield select(start => start.auth.token);
     const books = yield call(BookService.getBooks(token));
-    yield successGetBooks(books);
+    yield put(successGetBooks(books));
   } catch (error) {
     yield put(failGetBooks(error));
   }

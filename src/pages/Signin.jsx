@@ -2,12 +2,12 @@ import React from "react";
 import withoutAuth from "../hocs/withoutAuth";
 import SigninFormContainer from "../containers/SigninFormContainer";
 import { useSelector } from "react-redux";
-import { Ridirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function Signin() {
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector(state => state.auth.token);
   if (token !== null) {
-    return <Ridirect />;
+    return <Redirect />;
   }
   return (
     <div>

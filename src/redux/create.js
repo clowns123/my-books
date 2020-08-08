@@ -6,13 +6,12 @@ import reducer from "./modules/reducer";
 import { createBrowserHistory } from "history";
 import { routerMiddleware } from "connected-react-router";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "../redux/middlewares/saga";
+import rootSaga from "./middlewares/saga";
 
 export const history = createBrowserHistory();
 export default function create() {
   const token = TokenService.get();
   const sagaMiddle = createSagaMiddleware();
-
   const store = createStore(
     reducer(history),
     {

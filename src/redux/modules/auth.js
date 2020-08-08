@@ -14,11 +14,11 @@ const loginStart = () => ({
   type: START,
 });
 
-const loginSuccess = (token) => ({
+const loginSuccess = token => ({
   type: SUCCESS,
   token,
 });
-const loginFail = (err) => ({
+const loginFail = err => ({
   type: FAIL,
   err,
 });
@@ -56,7 +56,7 @@ export default function reducer(state = initialState, action) {
 
 // 액션 타입
 export const loginThunk = (email, password) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       dispatch(loginStart());
       await sleep();
@@ -72,7 +72,7 @@ export const loginThunk = (email, password) => {
 };
 
 function sleep(ms) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve();
     }, ms);

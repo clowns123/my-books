@@ -7,6 +7,8 @@ export default function BookList({ books, loading, error, getBooks }) {
     getBooks();
   }, [getBooks]);
 
+  console.log(books, loading, error);
+
   return (
     <div>
       <h1>BookList</h1>
@@ -20,7 +22,7 @@ export default function BookList({ books, loading, error, getBooks }) {
             {loading && <p>로딩 중...</p>}
             {error && <p>에러다!!</p>}
             {error === null &&
-              books.map((book) => {
+              books.map(book => {
                 return <p>{book.title}</p>;
               })}
           </div>
