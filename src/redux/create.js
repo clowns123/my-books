@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
 import TokenService from "../services/TokenService";
 import reducer from "./modules/reducer";
 import { createBrowserHistory } from "history";
@@ -21,12 +20,7 @@ export default function create() {
         err: null,
       },
     },
-    composeWithDevTools(
-      applyMiddleware(
-        thunk.withExtraArgument(history, routerMiddleware(history)),
-        sagaMiddle
-      )
-    )
+    composeWithDevTools(applyMiddleware(sagaMiddle, routerMiddleware(history)))
   );
   sagaMiddle.run(rootSaga);
   return store;
